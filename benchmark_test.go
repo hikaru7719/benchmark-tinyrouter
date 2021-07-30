@@ -18,7 +18,7 @@ func BenchmarkTinyRouter(b *testing.B) {
 	router := setupTinyrouter(list)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		req := httptest.NewRequest(http.MethodGet, "/repos/owner/repo/pages/health", nil)
+		req := httptest.NewRequest(http.MethodPost, "/orgs/testorg/migrations", nil)
 		res := httptest.NewRecorder()
 		router.ServeHTTP(res, req)
 	}
@@ -29,7 +29,7 @@ func BenchmarkGorilla(b *testing.B) {
 	router := setupGorilla(list)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		req := httptest.NewRequest(http.MethodGet, "/repos/owner/repo/pages/health", nil)
+		req := httptest.NewRequest(http.MethodPost, "/orgs/testorg/migrations", nil)
 		res := httptest.NewRecorder()
 		router.ServeHTTP(res, req)
 	}
@@ -40,7 +40,7 @@ func BenchmarkChi(b *testing.B) {
 	router := setupChi(list)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		req := httptest.NewRequest(http.MethodGet, "/repos/owner/repo/pages/health", nil)
+		req := httptest.NewRequest(http.MethodPost, "/orgs/testorg/migrations", nil)
 		res := httptest.NewRecorder()
 		router.ServeHTTP(res, req)
 	}
